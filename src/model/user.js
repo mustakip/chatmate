@@ -1,8 +1,8 @@
 class User {
-  constructor(name, password, chats = {}) {
-    this.name = name;
-    this.password = password;
-    this.chats = chats;
+  constructor(userDetails) {
+    this.username = userDetails.username;
+    this.password = userDetails.password;
+    this.chats = userDetails.chats;
   }
   saveMessage(chatMate, message) {
     this.chats[chatMate].push(message);

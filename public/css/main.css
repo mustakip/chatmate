@@ -1,0 +1,173 @@
+.header{
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background: #4a4e4d;
+}
+
+ .button_div{
+  display: flex;
+  flex-direction: column;
+  margin:100px auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;  
+} 
+
+.welcome_page{
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-bottom: 152px;
+  text-align: center;
+  background: rgb(19, 181, 202);
+  color: #4a4e4d;
+}
+
+.buttons{
+  margin: 5px;
+  width: 400px;
+  font-family: serif;
+  font-size: 20px;
+}
+
+.todo{
+  margin:10px;
+}
+
+.create_todo{
+  text-align: center;
+  margin:10px;
+}
+
+.todo_interface{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-top:2px;
+  margin-left: 10%;
+}
+
+.todo_div, .task, .login_form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 3px 3px lightslategray;
+  padding: 20px;
+  margin: 8px 4px;
+  color: #4a4e4d;
+  border:1px solid black
+}
+
+.todo_item{
+  border: 1px solid black;
+  padding: 10px;
+  margin: 2px;
+}
+
+.todo_container{
+  width: 70%;
+  margin-left: 15%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+}
+
+.todo_title{  
+  padding: 2px;
+  border-bottom: 1px solid black;
+  font-size: 40px;
+}
+
+.todo_description{
+  padding: 2px;
+  border-bottom: 1px solid black;
+  font-size: 25px;
+}
+
+.todo_tasks{
+  padding: 15px;
+  text-align: left;
+  font-size: 18px;
+}
+
+.task_options{
+  display: flex;
+}
+
+.main_body {
+  background: white;
+  width:70%;
+  height:500px;
+  margin-left:15%;
+  margin-top:100px;
+  border:1px solid black;  
+}
+
+.login_form{
+  display: flex;
+}
+
+.username_display{
+  font-size: 40px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+input{
+  margin:5px;
+  padding: 5px;
+  width: 250px;
+  height: 20px;
+}
+
+button{
+  margin:5px;
+  padding: 2px;
+  width: 100px;
+  height: 35px;
+  font-size: 13px;
+  border-radius: 3px;
+  background:rgb(19, 181, 202);
+  cursor:pointer;
+  
+}
+
+a{
+  text-decoration: none;
+}
+
+.app_title{
+  color: #f6cd61
+}
+
+.app_title:hover{
+  color: #fe8a71;
+}
+
+.img_btn:hover{
+  cursor: pointer;
+}
+
+.img_btn{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h1{
+  margin: 0px;
+}
+
+body{
+  margin: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.list_info:hover{
+  cursor: pointer;
+  color: #009688;
+}

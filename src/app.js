@@ -1,18 +1,20 @@
-const fs = require('fs');
 const express = require('express');
 const app = express();
-const FILES_PATH = {
-  homepage: './public/htmlPages/homepage.html'
-};
+const cookieParser = require('cookie-parser');
+const {readPostBody, logRequest, serveHomepage} = require('./handlers');
+const {createUser} = require('./signup');
+const {loginHandler, logoutHandler} = require('./logging');
+const {initialiseCache} = require('./cache');
 
-const serveHomepage = function(req, res) {
-  fs.readFile(FILES_PATH.homepage, (err, content) => {
-    res.setHeader('content-type', 'text/html');
-    res.status(200).send(200, content);
-  });
-};
+const cache = initialiseCache();
 
+app.use(logRequest);
+app.use(readPostBody);
+app.use(cookieParser());
+app.get('/', serveHomepage.bind(null, cache));
+app.post('/signup', createUser.bind(null, cache));
+app.post('/login', loginHandler.bind(null, cache));
+app.post('/logout', logoutHandler.bind(null, cache));
 app.use(express.static('public'));
-app.get('/', serveHomepage);
 
 module.exports = app;
