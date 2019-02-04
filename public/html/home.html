@@ -2,18 +2,33 @@
 <html>
   <head>
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/home.css" />
   </head>
   <body>
-    <div class="header">
-      <h1><a href="/" class="app_title" >CHATEMATE</a></h1>
+    <header>
+      <h1><a href="/" class="app_title">CHATEMATE</a></h1>
       <form method="POST" action="/logout">
         <div style="display: flex">
           <div class="username_display" id="username"></div>
           <div><button type="submit">Logout</button></div>
         </div>
       </form>
-    </div>
-    
+    </header>
+    <main>
+      <section class="chats_list_section" id="chats_register"></section>
+      <section class="chat_interface_section" id="chat_space">
+        <section class="chat_display_div">
+        </section>
+        <section class="message_box_div">
+          <input
+            class="message_box"
+            id="message_box"
+            type="text"
+            placeholder="Type message here"
+          />
+          <button id="send_button" class="send_button">Send</button>
+        </section>
+      </section>
+    </main>
   </body>
 </html>
