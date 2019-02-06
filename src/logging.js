@@ -13,16 +13,6 @@ const addSession = function(cache, username, cookie) {
   fs.writeFileSync(SESSIONS_PATH, JSON.stringify(cache.sessions), UTF8);
 };
 
-const isValidUser = function(cache, username, password) {
-  console.log('username is ', username);
-
-  console.log(cache.users);
-  return (
-    cache.users.users[username] &&
-    cache.users.users[username].password === password
-  );
-};
-
 const renderHome = function(cache, username, res) {
   const cookie = new Date().getTime();
   addSession(cache, username, cookie);
@@ -31,10 +21,8 @@ const renderHome = function(cache, username, res) {
 };
 
 const loginHandler = function(cache, req, res) {
-  console.log('req.body is ', req.body);
-
   const {username, password} = createKeyValue(req.body);
-  if (isValidUser(cache, username, password))
+  if (cache.users.isValidUser(username, password))
     return renderHome(cache, username, res);
   res.redirect(LOGIN_PAGE);
 };

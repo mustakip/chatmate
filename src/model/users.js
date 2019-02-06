@@ -5,7 +5,7 @@ class Users {
   }
 
   isValidUser(username, password) {
-    return users[username] && users[username].password === password;
+    return this.users[username] && this.users[username].password === password;
   }
 
   addUser({username, password}) {
