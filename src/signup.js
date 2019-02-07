@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {createKeyValue, getUsers} = require('./utils');
+const {createKeyValue} = require('./utils');
 
 const redirectTo = function(res, location) {
   res.status(302);

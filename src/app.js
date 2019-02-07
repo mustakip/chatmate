@@ -5,7 +5,13 @@ const {readPostBody, logRequest, serveHomepage} = require('./handlers');
 const {createUser} = require('./signup');
 const {loginHandler, logoutHandler} = require('./logging');
 const {initialiseCache} = require('./cache');
-const {checkForUser, renderChatList, renderChat} = require('./chatHandlers');
+const {
+  checkForUser,
+  renderChatList,
+  renderChat,
+  sendMessage,
+  renderUsername
+} = require('./chatHandlers');
 
 const cache = initialiseCache();
 
@@ -18,7 +24,9 @@ app.post('/signup', createUser.bind(null, cache));
 app.post('/login', loginHandler.bind(null, cache));
 app.post('/logout', logoutHandler.bind(null, cache));
 app.post('/chat', renderChat.bind(null, cache));
+app.post('/sendMessage', sendMessage.bind(null, cache));
 app.get('/chatList', renderChatList.bind(null, cache));
+app.get('/username', renderUsername.bind(null, cache));
 app.use(express.static('public'));
 
 module.exports = app;

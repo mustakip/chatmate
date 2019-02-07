@@ -1,26 +1,31 @@
 const displayChatList = function(chatMates) {
   const chatListDiv = document.getElementById('chats_register');
-  const chatMatesHtml = convertToHtml(chatMates);
+  const chatMatesHtml = convertChatListToHtml(chatMates);
   appendChildren(chatListDiv, chatMatesHtml);
-};
-
-const getChat = function(name) {
-  fetch('/chat', {
-    method: 'POST',
-    body: name
-  })
-    .then(res => res.json())
-    .then(chatMessages => {
-      displayChat(chatMessages);
-    });
 };
 
 const convertMessagesToHtml = function(messages) {
   const messagesHtml = messages.map(message => {
-    messageDiv = createDiv('message_div', 'message_div', message.message);
-    return messageDiv;
+    const messageDetailsDiv = createDiv(
+      'message_details_div',
+      'message_details_div'
+    );
+    const senderDiv = createDiv('sender_div', 'sender_div', message.sender);
+    const messageDiv = createDiv(
+      'message_div',
+      'smessage_div',
+      message.message
+    );
+    appendChildren(messageDetailsDiv, [senderDiv, messageDiv]);
+
+    return messageDetailsDiv;
   });
   return messagesHtml;
+};
+
+const displayName = function(name) {
+  const chatMateNameDiv = document.getElementById('name_div');
+  chatMateNameDiv.innerText = name;
 };
 
 const displayChat = function(chatMessages) {
@@ -29,16 +34,8 @@ const displayChat = function(chatMessages) {
   appendChildren(chatDisplayDiv, chatMessagesHtml);
 };
 
-const appendChildren = function(parent, children) {
-  console.log('divs are ', children);
-  parent.innerHTML = '';
-  children.forEach(child => {
-    parent.appendChild(child);
-  });
-};
-
-const convertToHtml = function(list) {
-  const htmlList = list.map(mate => {
+const convertChatListToHtml = function(chatList) {
+  const htmlList = chatList.map(mate => {
     const nameDiv = createDiv('chat_mate_name', mate, mate);
     nameDiv.onclick = getChat.bind(null, mate);
     return nameDiv;
@@ -46,22 +43,16 @@ const convertToHtml = function(list) {
   return htmlList;
 };
 
-const createDiv = function(className, id, innerHTML) {
-  const divElement = document.createElement('div');
-  divElement.id = id;
-  divElement.className = className;
-  divElement.innerHTML = innerHTML;
-  return divElement;
-};
-
-const getChatList = function() {
-  fetch('/chatList')
-    .then(res => res.json())
-    .then(chatMates => {
-      displayChatList(chatMates);
-    });
-};
-
 window.onload = () => {
+  console.log('window.onload q nahi horaha');
+  document.getElementById('send_button').onclick = sendMessage;
+  const username = getUsername();
+  console.log('username is ', username);
+  document.getElementById('name_div').value = username;
   getChatList();
+  setInterval(() => {
+    const name = document.getElementById('name_div').innerText;
+    console.log('name is ', name);
+    getChat(name);
+  }, 1000);
 };

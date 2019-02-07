@@ -1,5 +1,3 @@
-
-
 const createKeyValue = function(text) {
   const keyValuePair = new Object();
   const splittedText = text.split('&').map(pair => pair.split('='));
