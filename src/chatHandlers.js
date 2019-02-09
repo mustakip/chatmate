@@ -1,11 +1,9 @@
+const {isValidSession} = require('./utils');
 const fs = require('fs');
 const getCurrentUser = function(cache, cookie) {
   return cache.sessions[cookie];
 };
 
-const isValidSession = function(cookie, cache) {
-  return cache.sessions[cookie];
-};
 
 const checkForUser = function(cache, req, res, next) {
   const cookie = req.cookies.session;
@@ -25,7 +23,7 @@ const renderChat = function(cache, req, res) {
   const mate = req.body;
   console.log(mate);
   const username = req.username;
-  const chat = cache.users.users[username].chats[mate] || {};
+  const chat = cache.users.users[username].chats[mate] || [];
   res.send(chat);
 };
 

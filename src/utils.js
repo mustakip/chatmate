@@ -7,7 +7,11 @@ const createKeyValue = function(text) {
   return keyValuePair;
 };
 
+const isValidSession = function(cookie, cache) {
+  return cache.sessions[cookie];
+};
 
 module.exports = {
-  createKeyValue
+  createKeyValue,
+  isValidSession
 };

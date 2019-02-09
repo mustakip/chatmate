@@ -1,7 +1,12 @@
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
-const {readPostBody, logRequest, serveHomepage} = require('./handlers');
+const {
+  readPostBody,
+  logRequest,
+  serveHomepage,
+  redirect
+} = require('./handlers');
 const {createUser} = require('./signup');
 const {loginHandler, logoutHandler} = require('./logging');
 const {initialiseCache} = require('./cache');
@@ -19,6 +24,7 @@ app.use(logRequest);
 app.use(readPostBody);
 app.use(cookieParser());
 app.use(checkForUser.bind(null, cache));
+app.use(redirect.bind(null, cache));
 app.get('/', serveHomepage.bind(null, cache));
 app.post('/signup', createUser.bind(null, cache));
 app.post('/login', loginHandler.bind(null, cache));
