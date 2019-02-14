@@ -64,7 +64,7 @@ describe('Users', function() {
 
   it('should save the given message in both senders and receivers chats provided', function() {
     users.addUser('user2', 'password2');
-    const message = {sender: 'user1', receiver: 'user2', message: 'message'};
+    const message = 'message';
 
     users.setupChatBetween('user1', 'user2');
     users.saveMessage('user1', 'user2', message);
@@ -77,12 +77,12 @@ describe('Users', function() {
       .to.be.an('Array')
       .deep.equals([{sender: 'user1', receiver: 'user2', message: 'message'}]);
 
-      expect(users)
-        .to.have.property('users')
-        .to.have.property('user2')
-        .to.have.property('chats')
-        .to.have.property('user1')
-        .to.be.an('Array')
-        .deep.equals([{sender: 'user1', receiver: 'user2', message: 'message'}]);
+    expect(users)
+      .to.have.property('users')
+      .to.have.property('user2')
+      .to.have.property('chats')
+      .to.have.property('user1')
+      .to.be.an('Array')
+      .deep.equals([{sender: 'user1', receiver: 'user2', message: 'message'}]);
   });
 });
