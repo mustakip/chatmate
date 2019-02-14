@@ -5,10 +5,10 @@ const appendChildren = function(parent, children) {
   });
 };
 
-const createDiv = function(className, id, innerHTML) {
+const createDiv = function(className, id, content) {
   const divElement = document.createElement('div');
   divElement.id = id;
   divElement.className = className;
-  divElement.innerHTML = innerHTML;
+  divElement.innerText = content;
   return divElement;
 };
