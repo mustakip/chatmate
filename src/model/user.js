@@ -8,6 +8,10 @@ class User {
     this.chats[chatMate].push(message);
   }
 
+  setupChatWith(chatMate) {
+    this.chats[chatMate] = [];
+  }
+
   getChats(chatMate) {
     return chats[chatMate];
   }
