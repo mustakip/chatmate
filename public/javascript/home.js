@@ -44,15 +44,14 @@ const convertChatListToHtml = function(chatList) {
 };
 
 window.onload = () => {
-  console.log('window.onload q nahi horaha');
+  const messageBox = document.getElementById('message_box');
   document.getElementById('send_button').onclick = sendMessage;
   const username = getUsername();
-  console.log('username is ', username);
   document.getElementById('name_div').value = username;
-  getChatList();
   setInterval(() => {
+    messageBox.focus();
+    getChatList();
     const name = document.getElementById('name_div').innerText;
-    console.log('name is ', name);
     getChat(name);
   }, 1000);
 };

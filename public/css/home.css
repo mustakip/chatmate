@@ -66,11 +66,9 @@ main{
 }
 
 .chat_display_div {
-  height:90%;
+  height:87%;
   width:100%;
 
-  /* display:flex;
-  flex-direction: column; */
   overflow: scroll;
 }
 
