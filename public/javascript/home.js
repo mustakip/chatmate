@@ -43,11 +43,15 @@ const convertChatListToHtml = function(chatList) {
   return htmlList;
 };
 
+const handleKeypress = () => {
+  if (keyPressed == 'Enter') sendMessage();
+};
+
 window.onload = () => {
   const messageBox = document.getElementById('message_box');
+  messageBox.onkeypress = handleKeypress;
   document.getElementById('send_button').onclick = sendMessage;
-  const username = getUsername();
-  document.getElementById('name_div').value = username;
+  document.getElementById('name_div').value = getUsername();
   setInterval(() => {
     messageBox.focus();
     getChatList();

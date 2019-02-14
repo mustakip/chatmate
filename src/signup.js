@@ -8,13 +8,11 @@ const redirectTo = function(res, location) {
 };
 
 const addUser = function(username, password, cache) {
-  console.log('while adding users', cache.users);
   cache.users.addUser(username, password);
   fs.writeFile('./private/users.json', JSON.stringify(cache.users), () => {});
 };
 
 const isAlreadyExists = function(username, cache) {
-  console.log('users are', cache.users);
 
   return cache.users.users[username];
 };

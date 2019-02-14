@@ -1,5 +1,4 @@
 const appendChildren = function(parent, children) {
-  console.log('divs are ', children);
   parent.innerHTML = '';
   children.forEach(child => {
     parent.appendChild(child);

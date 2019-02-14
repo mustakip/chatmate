@@ -14,13 +14,11 @@ const checkForUser = function(cache, req, res, next) {
 
 const renderChatList = function(cache, req, res) {
   const chatMates = Object.keys(cache.users.users);
-  console.log('chatmate are', chatMates);
   res.send(chatMates);
 };
 
 const renderChat = function(cache, req, res) {
   const mate = req.body;
-  console.log(mate);
   const username = req.username;
   const chat = cache.users.users[username].chats[mate] || [];
   res.send(chat);
@@ -39,14 +37,12 @@ const sendMessage = function(cache, req, res) {
   if (isANewFriend(cache, receiver, sender)) {
     cache.users.setupChatBetween(sender, receiver);
   }
-  console.log(cache.users.saveMessage);
   cache.users.saveMessage(sender, receiver, message);
   fs.writeFile('./private/users.json', JSON.stringify(cache.users), () => {});
   res.send(cache.users.users[req.username].chats[receiver]);
 };
 
 const renderUsername = function(cache, req, res) {
-  console.log('usename in server is ', req.username);
   res.send(req.username);
 };
 
