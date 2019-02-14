@@ -44,7 +44,9 @@ const convertChatListToHtml = function(chatList) {
 };
 
 const handleKeypress = () => {
-  if (keyPressed == 'Enter') sendMessage();
+  if (event.key == 'Enter') {
+    sendMessage();
+  }
 };
 
 window.onload = () => {
