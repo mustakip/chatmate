@@ -4,7 +4,6 @@ const getCurrentUser = function(cache, cookie) {
   return cache.sessions[cookie];
 };
 
-
 const checkForUser = function(cache, req, res, next) {
   const cookie = req.cookies.session;
   if (isValidSession(cookie, cache)) {
@@ -38,14 +37,10 @@ const sendMessage = function(cache, req, res) {
   const {receiver, message} = JSON.parse(req.body);
   const sender = req.username;
   if (isANewFriend(cache, receiver, sender)) {
-    cache.users.users[sender].chats[receiver] = [];
-    cache.users.users[receiver].chats[sender] = [];
+    cache.users.setupChatBetween(sender, receiver);
   }
-  console.log('does it came into send message');
-  console.log('sender is ', sender);
-  console.log('receiver is ', receiver);
-  cache.users.users[sender].chats[receiver].push({sender, receiver, message});
-  cache.users.users[receiver].chats[sender].push({sender, receiver, message});
+  console.log(cache.users.saveMessage);
+  cache.users.saveMessage(sender, receiver, message);
   fs.writeFile('./private/users.json', JSON.stringify(cache.users), () => {});
   res.send(cache.users.users[req.username].chats[receiver]);
 };

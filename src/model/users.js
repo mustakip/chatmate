@@ -14,10 +14,11 @@ class Users {
   }
 
   saveMessage(sender, receiver, message) {
+    const chatMessage = {sender, receiver, message};
     const messageSender = this.users[sender];
     const messageReceiver = this.users[receiver];
-    messageSender.saveMessage(receiver, message);
-    messageReceiver.saveMessage(sender, message);
+    messageSender.saveMessage(receiver, chatMessage);
+    messageReceiver.saveMessage(sender, chatMessage);
   }
 
   setupChatBetween(user1, user2) {

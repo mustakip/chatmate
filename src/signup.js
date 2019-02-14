@@ -7,8 +7,9 @@ const redirectTo = function(res, location) {
   res.end();
 };
 
-const addUser = function(userDetails, cache) {
-  cache.users.addUser(userDetails);
+const addUser = function(username, password, cache) {
+  console.log('while adding users', cache.users);
+  cache.users.addUser(username, password);
   fs.writeFile('./private/users.json', JSON.stringify(cache.users), () => {});
 };
 
@@ -22,7 +23,7 @@ const createUser = function(cache, req, res) {
   const {username, password} = createKeyValue(req.body);
   if (isAlreadyExists(username, cache))
     return redirectTo(res, '/html/signup.html');
-  addUser({username, password}, cache);
+  addUser(username, password, cache);
   redirectTo(res, '/html/login.html');
 };
 
