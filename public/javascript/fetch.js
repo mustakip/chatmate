@@ -6,6 +6,8 @@ const getChat = function(name) {
   const headers = {method: 'POST', body: name};
   doFetchRequest('/chat', headers, displayChat);
   displayName(name);
+  const displayBox = document.getElementById('chat_display_div');
+  displayBox.scrollTop = displayBox.scrollHeight;
 };
 
 const sendMessage = function() {
@@ -13,7 +15,9 @@ const sendMessage = function() {
   const message = textBox.value;
   const receiver = document.getElementById('name_div').innerText;
   const headers = {method: 'POST', body: JSON.stringify({receiver, message})};
-  doFetchRequest('/sendMessage', headers, displayChat);
+  if (message) {
+    doFetchRequest('/sendMessage', headers, displayChat);
+  }
   textBox.value = '';
 };
 
