@@ -1,2 +1,4 @@
 node_modules/*
 private/*
+.idea/*
+.nyc_output/*
