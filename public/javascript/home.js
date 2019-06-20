@@ -26,6 +26,8 @@ const convertMessagesToHtml = function(messages) {
 const displayName = function(name) {
   const chatMateNameDiv = document.getElementById('name_div');
   chatMateNameDiv.innerText = name;
+  document.getElementById('username').innerText = name;
+
 };
 
 const displayChat = function(chatMessages) {
